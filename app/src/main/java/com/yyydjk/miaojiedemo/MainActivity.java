@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         View moreView = getLayoutInflater().inflate(R.layout.footer_more, null);
         TextView more = (TextView) moreView.findViewById(R.id.more);
         more.getLayoutParams().height = DeviceUtils.getScreenHeight(this) -
-                getSupportActionBar().getHeight() - item_max_height;
+                item_max_height;
         RecyclerViewUtils.setFooterView(recyclerView, moreView);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
