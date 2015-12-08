@@ -52,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
         View moreView = getLayoutInflater().inflate(R.layout.footer_more, null);
         TextView more = (TextView) moreView.findViewById(R.id.more);
         more.getLayoutParams().height = DeviceUtils.getScreenHeight(this) -
-                getSupportActionBar().getHeight() -
-                item_max_height - DeviceUtils.getStatusBarHeight(this);
+                getSupportActionBar().getHeight() - item_max_height;
         RecyclerViewUtils.setFooterView(recyclerView, moreView);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -67,49 +66,40 @@ public class MainActivity extends AppCompatActivity {
                         .findViewHolderForLayoutPosition(linearLayoutManager.findFirstCompletelyVisibleItemPosition());
                 RecyclerView.ViewHolder threeViewHolder = recyclerView
                         .findViewHolderForLayoutPosition(linearLayoutManager.findFirstCompletelyVisibleItemPosition() + 1);
+                RecyclerView.ViewHolder lastViewHolder = recyclerView
+                        .findViewHolderForLayoutPosition(linearLayoutManager.findLastVisibleItemPosition());
                 if (firstViewHolder != null && firstViewHolder instanceof MyAdapter.ViewHolder) {
                     MyAdapter.ViewHolder viewHolder = (MyAdapter.ViewHolder) firstViewHolder;
-                    if (viewHolder.itemView.getLayoutParams().height - dy > item_normal_height) {
+                    if (viewHolder.itemView.getLayoutParams().height - dy <= item_max_height
+                            && viewHolder.itemView.getLayoutParams().height - dy >= item_normal_height) {
                         viewHolder.itemView.getLayoutParams().height = viewHolder.itemView.getLayoutParams().height - dy;
                         viewHolder.mark.setAlpha(viewHolder.mark.getAlpha() - dy * alpha_d / item_normal_height);
                         viewHolder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                                 viewHolder.text.getTextSize() - dy * font_size_d / item_normal_height);
-                    } else {
-                        if (dy > 0) {
-                            viewHolder.itemView.getLayoutParams().height = item_normal_height;
-                            viewHolder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, item_normal_font_size);
-                            viewHolder.mark.setAlpha(item_normal_alpha);
-                        } else {
-                            viewHolder.mark.setAlpha(item_max_alpha);
-                            viewHolder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, item_max_font_size);
-                            viewHolder.itemView.getLayoutParams().height = item_max_height;
-                        }
+                        viewHolder.itemView.setLayoutParams(viewHolder.itemView.getLayoutParams());
                     }
-                    viewHolder.itemView.setLayoutParams(viewHolder.itemView.getLayoutParams());
                 }
                 if (secondViewHolder != null && secondViewHolder instanceof MyAdapter.ViewHolder) {
                     MyAdapter.ViewHolder viewHolder = (MyAdapter.ViewHolder) secondViewHolder;
-                    if (viewHolder.itemView.getLayoutParams().height + dy < item_max_height) {
+                    if (viewHolder.itemView.getLayoutParams().height + dy <= item_max_height
+                            && viewHolder.itemView.getLayoutParams().height + dy >= item_normal_height) {
                         viewHolder.itemView.getLayoutParams().height = viewHolder.itemView.getLayoutParams().height + dy;
                         viewHolder.mark.setAlpha(viewHolder.mark.getAlpha() + dy * alpha_d / item_normal_height);
                         viewHolder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                                 viewHolder.text.getTextSize() + dy * font_size_d / item_normal_height);
-                    } else {
-                        if (dy > 0) {
-                            viewHolder.mark.setAlpha(item_normal_alpha);
-                            viewHolder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, item_normal_font_size);
-                            viewHolder.itemView.getLayoutParams().height = item_normal_height;
-                        } else {
-                            viewHolder.itemView.getLayoutParams().height = item_max_height;
-                            viewHolder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, item_max_font_size);
-                            viewHolder.mark.setAlpha(item_max_alpha);
-                        }
+                        viewHolder.itemView.setLayoutParams(viewHolder.itemView.getLayoutParams());
                     }
-                    viewHolder.itemView.setLayoutParams(viewHolder.itemView.getLayoutParams());
                 }
 
                 if (threeViewHolder != null && threeViewHolder instanceof MyAdapter.ViewHolder) {
                     MyAdapter.ViewHolder viewHolder = (MyAdapter.ViewHolder) threeViewHolder;
+                    viewHolder.mark.setAlpha(item_normal_alpha);
+                    viewHolder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, item_normal_font_size);
+                    viewHolder.itemView.getLayoutParams().height = item_normal_height;
+                    viewHolder.itemView.setLayoutParams(viewHolder.itemView.getLayoutParams());
+                }
+                if (lastViewHolder != null && lastViewHolder instanceof MyAdapter.ViewHolder) {
+                    MyAdapter.ViewHolder viewHolder = (MyAdapter.ViewHolder) lastViewHolder;
                     viewHolder.mark.setAlpha(item_normal_alpha);
                     viewHolder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, item_normal_font_size);
                     viewHolder.itemView.getLayoutParams().height = item_normal_height;
