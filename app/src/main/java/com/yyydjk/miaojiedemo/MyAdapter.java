@@ -56,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             holder.text.setTextSize(TypedValue.COMPLEX_UNIT_PX, item_normal_font_size);
             holder.itemView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, item_normal_height));
         }
-        holder.text.setText(String.format("光谷天地%d", position));
+        holder.text.setText(String.format("in the place %d", position));
         holder.imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         Glide.with(holder.imageView.getContext()).load(walls.get(position)).into(holder.imageView);
 

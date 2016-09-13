@@ -1,10 +1,11 @@
 package com.yyydjk.miaojiedemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private float font_size_d;
 
     private List<Integer> walls = Arrays.asList(R.mipmap.wall01,
+            R.mipmap.wall02, R.mipmap.wall03, R.mipmap.wall04, R.mipmap.wall05,
+            R.mipmap.wall06, R.mipmap.wall07, R.mipmap.wall08, R.mipmap.wall09,
+            R.mipmap.wall10, R.mipmap.wall01,
             R.mipmap.wall02, R.mipmap.wall03, R.mipmap.wall04, R.mipmap.wall05,
             R.mipmap.wall06, R.mipmap.wall07, R.mipmap.wall08, R.mipmap.wall09,
             R.mipmap.wall10);
@@ -48,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(false);
         MyAdapter myAdapter = new MyAdapter(this, walls);
         HeaderAndFooterRecyclerViewAdapter headerAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(myAdapter);
+        GravitySnapHelper snapHelper = new GravitySnapHelper(Gravity.TOP);
+        snapHelper.attachToRecyclerView(recyclerView);
+
         recyclerView.setAdapter(headerAndFooterRecyclerViewAdapter);
         View moreView = getLayoutInflater().inflate(R.layout.footer_more, null);
         TextView more = (TextView) moreView.findViewById(R.id.more);

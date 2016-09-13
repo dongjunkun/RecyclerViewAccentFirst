@@ -9,6 +9,6 @@
     <dimen name="item_max_font_size">36sp</dimen>
     <dimen name="item_normal_font_size">16sp</dimen>
 
-    <fraction name="item_max_mask_alpha">35%</fraction>
+    <fraction name="item_max_mask_alpha">5%</fraction>
     <fraction name="item_normal_mask_alpha">65%</fraction>
 </resources>
