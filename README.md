@@ -4,7 +4,10 @@ RecyclerView凸显第一个item效果
 ##效果预览
 <img src="https://raw.githubusercontent.com/dongjunkun/miaojiedemo/master/art/accent_first.gif"/>
 
-download [demo apk](https://raw.githubusercontent.com/dongjunkun/miaojiedemo/master/demo.apk)
+##扫描下载
+<img src="https://raw.githubusercontent.com/dongjunkun/miaojiedemo/master/art/qr.png"/>
+
+直接下载 [RecyclerViewAccentFirst](https://raw.githubusercontent.com/dongjunkun/miaojiedemo/master/demo.apk)
 
 #特色
  - 支持任意多的item
