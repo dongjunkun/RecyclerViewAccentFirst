@@ -2,7 +2,7 @@
 RecyclerView凸显第一个item效果
 
 ##效果预览
-<img src="https://raw.githubusercontent.com/dongjunkun/miaojiedemo/master/art/mockmiaojie.gif"/>
+<img src="https://raw.githubusercontent.com/dongjunkun/miaojiedemo/master/art/accent_first.gif"/>
 
 download [demo apk](https://raw.githubusercontent.com/dongjunkun/miaojiedemo/master/demo.apk)
 
